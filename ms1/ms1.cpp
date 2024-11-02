@@ -1,5 +1,5 @@
 /***********************************************************************
-// OOP244 Project, milestone 1 : Lab tester program
+// OOP244 Project, milestone 1: tester program
 //
 // File	ms1.cpp
 // Version 1.0
