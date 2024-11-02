@@ -1,4 +1,4 @@
-# Project: Dine-In Digital: A Restaurant Ordering System
+# Project: Dine-In Digital, A Restaurant Ordering System
 - Version 0.5 (submission not open)
 
 ## Objective 
