@@ -7,13 +7,13 @@ In this project, you will build an application that enables waiters to take cust
 
 ### Milestones
 
-|Milestone| Revision  |Comments |
+|Milestone| Revision  |Comments | Walkthrough |
 |------|:---:|:---:|
-| [MS1](#milestone-1) | V1.0 | | 
-| [MS2](#milestone-2) | V1.0 |  |  
-| [MS3](#milestone-3) | V1.0  |  | 
-| [MS4](#milestone-4) | V1.0  | |  
-| [MS5](#milestone-5) | V1.0 |  |  
+| [MS1](#milestone-1) | V1.0 | | [Video](https://youtu.be/fLKefJo04ME) |
+| [MS2](#milestone-2) | V1.0 |  | [Video](https://youtu.be/3TFA6RT0O4U) |
+| [MS3](#milestone-3) | V1.0  |  | |
+| [MS4](#milestone-4) | V1.0  | |  |
+| [MS5](#milestone-5) | V1.0 |  |  |
 
 For this project, you will develop an application that enables waiters to take customer orders for food and drinks, and generate a bill upon completion of the order.
 
