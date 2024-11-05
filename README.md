@@ -27,8 +27,8 @@ This project will be done in 5 milestones and each milestone will have its due d
 
 |Milestone| Mark | Due date | Submission Policy|
 |:------:|:---:|:---:|-------|
-| MS1 | 10% | TBA | gets full mark even if 1 week late. gets 0% afterwards|
-| MS2 | 10% | TBA | gets full mark even if 1 week late. gets 0% afterwards|
+| MS1 | 10% | Nov 10 | gets full mark even if 1 week late. gets 0% afterwards|
+| MS2 | 10% | Nov 15 | gets full mark even if 1 week late. gets 0% afterwards|
 | MS3 | 10% | TBA | gets full mark even if 1 week late. gets 0% afterwards|
 | MS4 | 10% | TBA | gets full mark even if 1 week late. gets 0% afterwards|
 | MS5 | 60% |  Dec 5 | See below|
