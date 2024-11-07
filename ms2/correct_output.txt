@@ -40,6 +40,7 @@ Milestone 2
     0- Return
    > 2
          1- Sub-option 1
+         2- Sub-option 2
          0- Back to test 2
         > 0
    Test 2, Selection test
@@ -48,7 +49,6 @@ Milestone 2
     3- Option 3
     0- Return
    > 0
-This should never happen!
 Milestone 2
  1- Run Test 1
  2- Run Test 2
