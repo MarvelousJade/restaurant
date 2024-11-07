@@ -7,13 +7,13 @@ In this project, you will build an application that enables waiters to take cust
 
 ### Milestones
 
-|Milestone| Revision  |Comments |
-|------|:---:|:---:|
-| [MS1](#milestone-1) | V1.0 | | 
-| [MS2](#milestone-2) | V1.0 |  |  
-| [MS3](#milestone-3) | V1.0  |  | 
-| [MS4](#milestone-4) | V1.0  | |  
-| [MS5](#milestone-5) | V1.0 |  |  
+|Milestone| Revision  |Comments | Walkthrough |
+|------|:---:|:---:| :---: |
+| [MS1](#milestone-1) | V1.0 | | [Video](https://youtu.be/fLKefJo04ME) |
+| [MS2](#milestone-2) | V1.0 |  | [Video](https://youtu.be/3TFA6RT0O4U) |
+| [MS3](#milestone-3) | V1.0  |  | |
+| [MS4](#milestone-4) | V1.0  | |  |
+| [MS5](#milestone-5) | V1.0 |  |  |
 
 For this project, you will develop an application that enables waiters to take customer orders for food and drinks, and generate a bill upon completion of the order.
 
@@ -27,8 +27,8 @@ This project will be done in 5 milestones and each milestone will have its due d
 
 |Milestone| Mark | Due date | Submission Policy|
 |:------:|:---:|:---:|-------|
-| MS1 | 10% | TBA | gets full mark even if 1 week late. gets 0% afterwards|
-| MS2 | 10% | TBA | gets full mark even if 1 week late. gets 0% afterwards|
+| MS1 | 10% | Nov 10 | gets full mark even if 1 week late. gets 0% afterwards|
+| MS2 | 10% | Nov 15 | gets full mark even if 1 week late. gets 0% afterwards|
 | MS3 | 10% | TBA | gets full mark even if 1 week late. gets 0% afterwards|
 | MS4 | 10% | TBA | gets full mark even if 1 week late. gets 0% afterwards|
 | MS5 | 60% |  Dec 5 | See below|
