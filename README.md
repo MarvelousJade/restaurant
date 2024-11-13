@@ -1,5 +1,7 @@
 # Project: Dine-In Digital, A Restaurant Ordering System
-- Version 0.5 (submission not open)
+- Version 0.6 
+  milestones 1 and 2 open for submission.
+  milestone 2 out for preview
 
 ## Objective 
 In this project, you will build an application that enables waiters to take customer orders for food and drinks and generate a bill upon the order's completion. Each bill will have a unique number, and once an order is finalized, the bill will be saved in a separate file named according to its bill number.
@@ -9,9 +11,9 @@ In this project, you will build an application that enables waiters to take cust
 
 |Milestone| Revision  |Comments | Walkthrough |
 |------|:---:|:---:| :---: |
-| [MS1](#milestone-1) | V1.0 | | [Video](https://youtu.be/fLKefJo04ME) |
-| [MS2](#milestone-2) | V1.0 |  | [Video](https://youtu.be/3TFA6RT0O4U) |
-| [MS3](#milestone-3) | V1.0  |  | |
+| [MS1](#milestone-1) | V1.0 | open | [Video](https://youtu.be/fLKefJo04ME) |
+| [MS2](#milestone-2) | V1.0 | open | [Video](https://youtu.be/3TFA6RT0O4U) |
+| [MS3](#milestone-3) | V1.0  | preview  | |
 | [MS4](#milestone-4) | V1.0  | |  |
 | [MS5](#milestone-5) | V1.0 |  |  |
 
@@ -502,8 +504,6 @@ The function should return a valid integer that lies within the min to max range
 0<ENTER>
 ```
 
-
-
 ### Date Entry for foolproof entry
 > Will be tested in milstone 6
 ```text
@@ -537,11 +537,205 @@ Have a good day!
 > If you would like to successfully complete the project and be on time, **start early** and try to meet all the due dates of the milestones.
 
 
-Upload your source code and the tester program (**Utils.cpp, Utils.h, Menu.h , Menu.cpp and ms1.cpp**) to your `matrix` account. Compile and run your code using the `g++` compiler [as shown in the introduction](#compiling-and-testing-your-program) and make sure that everything works properly.
+Upload your source code and the tester program (**Utils.cpp, Utils.h, Menu.h , Menu.cpp and ms2.cpp**) to your `matrix` account. Compile and run your code using the `g++` compiler [as shown in the introduction](#compiling-and-testing-your-program) and make sure that everything works properly.
 
 Then, run the following command from your account (replace `profname.proflastname` with your professor’s Seneca userid):
 ```
 ~profname.proflastname/submit 2??/prj/m2
+```
+and follow the instructions.
+
+- *2??* is replaced with your subject code
+
+
+### The submit program's options:
+```bash
+~prof_name.prof_lastname/submit DeliverableName [-submission options]<ENTER>
+[-submission option] acceptable values:
+  "-due":
+       Shows due dates only
+       This option cannot be used in combination with any other option.
+  "-skip_spaces":
+       Do the submission regardless of incorrect horizontal spacing.
+       This option may attract penalty.
+  "-skip_blank_lines":
+       Do the submission regardless of incorrect vertical spacing.
+       This option may attract penalty.
+  "-feedback":
+       Check the program execution without submission.
+```
+
+## [Back to milestones](#milestones)
+
+
+## Milestone 3: Billable, Food, and Drink Modules
+
+> **Note:**  
+In this milestone, as before, you can simplify your code by using functions from the `Utils` module. This module provides utilities for tasks such as dynamic memory allocation, foolproof data entry, and string manipulation. Refer to the `Utils` functions whenever you encounter a repetitive or low-level operation, as this can help you focus on the main logic of your classes.
+
+---
+
+### `Billable` Class
+The `Billable` class serves as an abstract base for items that can be added to a customer’s bill. It contains attributes and methods that define shared functionality among all billable items.
+
+1. **Attributes:**
+   - **`m_name`**: A dynamically allocated C-string to hold the name or description of the item.
+   - **`m_price`**: A `double` representing the base price of the item.
+
+2. **Protected Methods:**
+   - **`void price(double value)`**: Sets the item’s price.
+   - **`void name(const char* name)`**: Sets the item’s name, handling dynamic allocation.
+
+3. **Public Methods and Overloads:**
+   - **Constructors and Destructor**:
+     - A default constructor initializes an empty `Billable` item.
+     - Copy constructor and assignment operator to handle deep copies of dynamic members.
+     - A virtual destructor ensures proper cleanup of derived objects.
+
+   - **Virtual Methods**:
+     - **`double price() const`**: Returns the item’s price, allowing derived classes to override if needed.
+
+   - **Pure Virtual Methods** (to be implemented in derived classes):
+     - **`ostream& print(ostream& ostr=cout)const`**: Displays item information in a formatted way.
+     - **`bool order()`**: Takes customer order for details of the item (e.g., size, customizations).
+     - **`bool ordered()const`**: Returns true if details have been set, indicating the item is ordered.
+     - **`ifstream& read(ifstream& file)`**: Reads item details from an input file.
+
+   - **Operator Overloads**:
+      ```c++
+      double operator+(double money, const Billable& B);
+      double& operator+=(double& money, const Billable& B);
+      ```
+     - `+` and `+=` are overloaded to allow adding an item’s price to a total amount (of type `double`), enabling easy bill calculations.
+     - **Conversion Operator (`operator const char*()const`)**: Provides access to the name for display or comparison.
+
+---
+
+### `Drink` Class
+The `Drink` class inherits from `Billable` and represents a drink item. It adds functionality to manage the drink size and customizes price based on size.
+
+1. **Attributes:**
+   - **`m_size`**: A `char` indicating the size of the drink (e.g., `'S'` for small, `'M'` for medium, `'L'` for large, and `'X'` for extra large). If `m_size` is unset, it defaults to a safe empty state, and `"....."` will display for the size.
+
+2. **Public Methods**:
+   - **`print`**: Overrides `Billable`’s print to display or save the drink’s name, size, and price.
+   
+      The `print` method outputs the drink in the following format:
+      - **name**: Up to 25 characters in 28 spaces, left-justified and padded with dots (`'.'`).
+      - **size**: Displays as `"SML.."`, `"MID.."`, `"LRG.."`, `"XLR.."` for small, medium, large, and extra large sizes, respectively. If size is unset (i.e., `!ordered()`), it displays as `"....."`.
+      - **price**: Right-justified in 7 spaces, padded with spaces and displayed with 2 decimal places.
+
+   - **`order`**:  Overrides `Billable`’s order as follows:
+      Displays a menu for drink size selection with 3 indentations:
+      ```text
+      Drink Size Selection
+         1- Small
+         2- Medium
+         3- Large
+         4- Extra Large
+         0- Back
+      >
+      ```
+     Sets the order size to its acceptable values or leaves it unset if "Back" is selected.
+
+     The method returns `true` if the size was selected (indicating it was ordered) or `false` if not.
+
+   - **`ordered`**:  Overrides `Billable`’s ordered, returning `true` if a size has been selected.
+
+   - **`read`**:  Overrides `Billable`’s read.
+     Reads the drink’s details from a comma-separated input file in the following format:
+     ```text
+     name of drink,price
+     ```
+     Example:
+     ```text
+     Orange Juice,3.5<Newline>
+     ```
+     If the read is successful, the details are set to corresponding values; otherwise, nothing changes.
+
+   - **`price`**: Adjusts the base price based on `m_size` as follows:
+     - Returns `Billable` price if size is large or if item is not ordered.
+     - For small, returns half of the price; for medium, returns 3/4 of the price; and for extra large, returns 1.5 times the original price.
+
+3. Since this class does not manage resources outside of its scope, it does not require implementing the rule of three. The object is always created in a safe empty state.
+
+---
+
+### `Food` Class
+The `Food` class, derived from `Billable`, represents a food item and includes functionality for customization and portion type.
+
+1. **Attributes:**
+   - **`m_ordered`**: A boolean flag indicating whether the item has been ordered.
+   - **`m_child`**: A boolean representing if the food is a child portion, which affects pricing.
+   - **`m_customize`**: A dynamically allocated C-string for storing customization notes (e.g., "No onions").
+
+2. **Public Methods and Overloads**:
+   - **Constructors and Destructor**: The copy constructor, assignment operator, and destructor manage dynamic allocation for `m_customize`. The no-argument constructor leaves the object in a safe empty state.
+
+   - **`print`**: Overrides `Billable`’s print to display or save the food item’s details, including portion type. Customizations are printed only if the `ostream` object is `cout`:
+     - **name**: Up to 25 characters in 28 spaces, left-justified and padded with dots (`'.'`).
+     - **portion type**: Displays `"Child"` or `"Adult"` if `ordered()` is `true` and `m_child` is set. Otherwise, it displays `"....."`.
+     - **price**: Right-justified in 7 spaces, padded with spaces, and displayed with 2 decimal places.
+     - **customizations**: If `m_customize` is not null and `ostream` is `cout`, it prints `" >> "` followed by the first 30 characters of `m_customize`. Otherwise, nothing is printed.
+
+   - **`order`**:  Overrides `Billable`’s order as follows:
+      Displays a menu for food portion selection with 3 indentations:
+      ```text
+      Food Size Selection
+         1- Adult
+         2- Child
+         0- Back
+      > 
+      ```
+      Sets the order portion to its acceptable values, setting `m_ordered` to `true`. If "Back" is selected, the portion remains unset.
+
+      If a portion is ordered, the user is prompted for customization:
+      ```text
+      Special instructions
+      > 
+      ```
+      If the user just presses enter, no customization is added, and `m_customize` remains null. Otherwise, customization instructions are stored in `m_customize` (you may refer to the `Utils` functions for dynamic memory allocation here).
+
+      The method returns `true` if a portion is ordered, or `false` if not.
+
+   - **`ordered`**:  Overrides `Billable`’s ordered, returning the `m_ordered` flag.
+
+   - **`read`**:  Overrides `Billable`’s read.
+     Reads the food’s details from a comma-separated input file in the following format:
+     ```text
+     name of Food,price
+     ```
+     Example:
+     ```text
+     Pasta with Tomato sauce,3.5<Newline>
+     ```
+     If the read is successful, the details are set to corresponding values; otherwise, the object remains unchanged.
+
+   - **`price`**: Overrides `Billable`’s price. 
+     Returns half the price if ordered and `m_child` is true, indicating a child portion; otherwise, it returns the original `Billable` price.
+## ms3 tester program
+
+TBA
+
+### Sample Execution
+
+TBA
+
+### Data Entry for ms3
+TBA
+
+
+
+## MS3 Submission  (not opened yet)
+
+> If you would like to successfully complete the project and be on time, **start early** and try to meet all the due dates of the milestones.
+
+
+Upload your source code and the tester program (**Utils.cpp, Utils.h, Menu.h , Menu.cpp, Billable.h, Billable.cpp, Drink.h, Drink.cpp, Food.h, Food.cpp and ms3.cpp**) to your `matrix` account. Compile and run your code using the `g++` compiler [as shown in the introduction](#compiling-and-testing-your-program) and make sure that everything works properly.
+
+Then, run the following command from your account (replace `profname.proflastname` with your professor’s Seneca userid):
+```
+~profname.proflastname/submit 2??/prj/m3
 ```
 and follow the instructions.
 
