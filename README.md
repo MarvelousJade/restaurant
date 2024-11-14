@@ -13,7 +13,7 @@ In this project, you will build an application that enables waiters to take cust
 |------|:---:|:---:| :---: |
 | [MS1](#milestone-1) | V1.0 | open | [Video](https://youtu.be/fLKefJo04ME) |
 | [MS2](#milestone-2) | V1.0 | open | [Video](https://youtu.be/3TFA6RT0O4U) |
-| [MS3](#milestone-3) | V1.0  | open  | |
+| [MS3](#milestone-3) | V1.0  | open  | [Video](https://youtu.be/YqiOuSdU4zA) |
 | [MS4](#milestone-4) | V1.0  | |  |
 | [MS5](#milestone-5) | V1.0 |  |  |
 
