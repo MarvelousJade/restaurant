@@ -567,7 +567,8 @@ and follow the instructions.
 ## [Back to milestones](#milestones)
 
 
-## Milestone 3: Billable, Food, and Drink Modules
+# Milestone 3: 
+## Billable, Food, and Drink Modules
 
 > **Note:**  
 In this milestone, as before, you can simplify your code by using functions from the `Utils` module. This module provides utilities for tasks such as dynamic memory allocation, foolproof data entry, and string manipulation. Refer to the `Utils` functions whenever you encounter a repetitive or low-level operation, as this can help you focus on the main logic of your classes.
