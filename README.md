@@ -13,7 +13,7 @@ In this project, you will build an application that enables waiters to take cust
 |------|:---:|:---:| :---: |
 | [MS1](#milestone-1) | V1.0 | open | [Video](https://youtu.be/fLKefJo04ME) |
 | [MS2](#milestone-2) | V1.0 | open | [Video](https://youtu.be/3TFA6RT0O4U) |
-| [MS3](#milestone-3) | V1.0  | preview  | |
+| [MS3](#milestone-3) | V1.0  | open  | |
 | [MS4](#milestone-4) | V1.0  | |  |
 | [MS5](#milestone-5) | V1.0 |  |  |
 
@@ -433,57 +433,56 @@ size_t operator<<(std::ostream& ostr, const Menu& m);
 > Note that this insertion overload, unlike other DO NOT return the ostream reference.
 
 ## Utils module foolproof entry functions
-> The following will be tested in milestone 6
+> The following will be tested in milestone 5
 
-To ensure foolproof data entry, consider writing two functionw in the Utils module and using them within your select method.
+To ensure foolproof data entry, implement two functions in the `Utils` module and use them within your selection method.
 
-### getint
+### `getInt`
    ```c++
-   int getInt(int min, int max);
+   int getInt();
    ```
-Create a method in the Utils class to handle integer input with the following requirements:
+Create a method in the `Utils` class to handle integer input with the following requirements:
 
 #### Requirements:
-- Prompt for Valid Input: Continuously prompt the user until a valid integer is entered.
-- Handle Empty Input: If the user presses enter without typing anything, display:
+- **Prompt for Valid Input:** Continuously prompt the user until a valid integer is entered.
+- **Handle Empty Input:** If the user presses enter without typing anything, display:
    ```text
-   You must enter a value: 
+   You must enter a value:
    ```
-- Validate Integer Input: If the user enters non-integer data, display:
+- **Validate Integer Input:** If the user enters non-integer data, display:
    ```text
-   Invalid integer: 
+   Invalid integer:
    ```
    Clear the error state before prompting again.
-- Check for Trailing Characters: If there are extra characters after the integer, display:
+- **Check for Trailing Characters:** If there are extra characters after the integer, display:
    ```text
-   Only an integer please: 
+   Only an integer please:
    ```
    Prompt the user again for input.
-- Clear Input Buffer: After processing input, clear any remaining characters in the input buffer to prepare for the next entry.
+- **Clear Input Buffer:** After processing the input, clear any remaining characters in the input buffer to prepare for the next entry.
 
 #### Outcome:
-The method should only return a valid integer after ensuring it meets all the above criteria.
-The logic should prevent any invalid or unexpected input from being processed, ensuring the program can handle user input robustly.
+The method should only return a valid integer after ensuring it meets all the above criteria. The logic should prevent any invalid or unexpected input from being processed, ensuring robust handling of user input.
 
-### getint(min,max)
+### `getInt(min, max)`
 ```c++
 int getInt(int min, int max);
 ```
-Create an overload of the getInt() function in the Utils module:
+Create an overloaded `getInt` function in the `Utils` module:
 
 #### Requirements:
-- This function should repeatedly prompt the user for integer input until a valid value within the specified range (min to max, inclusive) is provided.
-- Use the getInt() function to handle basic integer input and validation.
-- If the entered value is outside the specified range, display an error message and prompt the user to try again.
-- The process should continue until the user enters a value that meets the range criteria.
-#### Expected Error Message:
-- If the input value is out of range, display:
+- **Range Validation:** This function should repeatedly prompt the user for integer input until a valid value within the specified range (min to max, inclusive) is provided.
+- **Use Basic Validation:** Use the `getInt()` function to handle basic integer input and validation.
+- **Handle Out-of-Range Values:** If the entered value is outside the specified range, display an error message and prompt the user to try again.
+- **Expected Error Message:** If the input value is out of range, display:
    ```text
    Invalid value: [min <= value <= max], try again:
    ```
-   > Replace min and max with the respective values passed as arguments.
+   Replace `min` and `max` with the respective values passed as arguments.
+
 #### Outcome:
-The function should return a valid integer that lies within the min to max range after ensuring that all input is properly validated and error-handled.
+The function should return a valid integer within the min to max range after ensuring that all input is properly validated and error-handled.
+
 
 ## ms2 tester program
 
@@ -651,7 +650,11 @@ The `Drink` class inherits from `Billable` and represents a drink item. It adds 
      ```text
      Orange Juice,3.5<Newline>
      ```
-     If the read is successful, the details are set to corresponding values; otherwise, nothing changes.
+     If the read is successful
+      - the details are set to corresponding values
+      - m_size is set to its default value
+     
+     Otherwise, nothing changes.
 
    - **`price`**: Adjusts the base price based on `m_size` as follows:
      - Returns `Billable` price if size is large or if item is not ordered.
@@ -687,14 +690,14 @@ The `Food` class, derived from `Billable`, represents a food item and includes f
          0- Back
       > 
       ```
-      Sets the order portion to its acceptable values, setting `m_ordered` to `true`. If "Back" is selected, the portion remains unset.
+      Sets the order portion to its acceptable values, setting `m_ordered` to `true`. If "Back" is selected, the portion remains unset, m_ordered is set to false and m_customize is deallocated.
 
       If a portion is ordered, the user is prompted for customization:
       ```text
       Special instructions
       > 
       ```
-      If the user just presses enter, no customization is added, and `m_customize` remains null. Otherwise, customization instructions are stored in `m_customize` (you may refer to the `Utils` functions for dynamic memory allocation here).
+      If the user just presses enter, no customization is added, and `m_customize` is deallocated and set to nullptr. Otherwise, customization instructions are stored in `m_customize` (you may refer to the `Utils` functions for dynamic memory allocation here).
 
       The method returns `true` if a portion is ordered, or `false` if not.
 
@@ -709,27 +712,31 @@ The `Food` class, derived from `Billable`, represents a food item and includes f
      ```text
      Pasta with Tomato sauce,3.5<Newline>
      ```
-     If the read is successful, the details are set to corresponding values; otherwise, the object remains unchanged.
+     If the read is successful
+      - the details are set to corresponding values
+      - m_child and m_order are set to thier default values
+      - m_customize is deleted and set to nullptr
+      
+     Otherwise, the object remains unchanged.
 
    - **`price`**: Overrides `Billable`’s price. 
      Returns half the price if ordered and `m_child` is true, indicating a child portion; otherwise, it returns the original `Billable` price.
 ## ms3 tester program
 
-TBA
+[ms3.cpp](ms3/ms3.cpp)
 
 ### Sample Execution
 
-TBA
+[correct_output.txt](ms3/correct_output.txt)
 
 ### Data Entry for ms3
-TBA
+
+Follow the instructions of the tester
 
 
-
-## MS3 Submission  (not opened yet)
+## MS3 Submission 
 
 > If you would like to successfully complete the project and be on time, **start early** and try to meet all the due dates of the milestones.
-
 
 Upload your source code and the tester program (**Utils.cpp, Utils.h, Menu.h , Menu.cpp, Billable.h, Billable.cpp, Drink.h, Drink.cpp, Food.h, Food.cpp and ms3.cpp**) to your `matrix` account. Compile and run your code using the `g++` compiler [as shown in the introduction](#compiling-and-testing-your-program) and make sure that everything works properly.
 
