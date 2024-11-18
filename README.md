@@ -1,7 +1,6 @@
 # Project: Dine-In Digital, A Restaurant Ordering System
-- Version 0.6 
-  milestones 1 and 2 open for submission.
-  milestone 2 out for preview
+- Version 0.8 
+  Milestone 4 preview  
 
 ## Objective 
 In this project, you will build an application that enables waiters to take customer orders for food and drinks and generate a bill upon the order's completion. Each bill will have a unique number, and once an order is finalized, the bill will be saved in a separate file named according to its bill number.
@@ -14,7 +13,7 @@ In this project, you will build an application that enables waiters to take cust
 | [MS1](#milestone-1) | V1.0 | open | [Video](https://youtu.be/fLKefJo04ME) |
 | [MS2](#milestone-2) | V1.0 | open | [Video](https://youtu.be/3TFA6RT0O4U) |
 | [MS3](#milestone-3) | V1.0  | open  | [Video](https://youtu.be/YqiOuSdU4zA) |
-| [MS4](#milestone-4) | V1.0  | |  |
+| [MS4](#milestone-4) | V1.0  | preview |  |
 | [MS5](#milestone-5) | V1.0 |  |  |
 
 For this project, you will develop an application that enables waiters to take customer orders for food and drinks, and generate a bill upon completion of the order.
@@ -31,7 +30,7 @@ This project will be done in 5 milestones and each milestone will have its due d
 |:------:|:---:|:---:|-------|
 | MS1 | 10% | Nov 10 | gets full mark even if 1 week late. gets 0% afterwards|
 | MS2 | 10% | Nov 15 | gets full mark even if 1 week late. gets 0% afterwards|
-| MS3 | 10% | TBA | gets full mark even if 1 week late. gets 0% afterwards|
+| MS3 | 10% | Nov 23 | gets full mark even if 1 week late. gets 0% afterwards|
 | MS4 | 10% | TBA | gets full mark even if 1 week late. gets 0% afterwards|
 | MS5 | 60% |  Dec 5 | See below|
 
@@ -766,5 +765,305 @@ and follow the instructions.
   "-feedback":
        Check the program execution without submission.
 ```
+
+## [Back to milestones](#milestones)
+
+
+# Milestone 4:  
+## Ordering Module  
+
+Continue developing the system by implementing the `Ordering` module. This module encapsulates and organizes all the tasks involved in taking orders. The methods of this class will be invoked when the options of the main menu are selected by the waiter, assisting with taking customer orders at the restaurant.
+
+---
+
+### Attributes  
+
+#### Billable, Food, and Drink Counters  
+
+The `Ordering` module includes attributes to track the number of food and drink items in the menu and the number of billable items added to a bill. These attributes ensure proper organization and management of the ordering process:  
+
+- **Food Counter**: An integer (preferably unsigned) to keep track of the number of food items loaded from the food data file.  
+- **Drink Counter**: An integer (preferably unsigned) to keep track of the number of drink items loaded from the drink data file.  
+- **Billable Counter**: An integer (preferably unsigned) to track the number of `Billable` items added to the bill from the food and drink menu.
+
+---
+
+#### Bill Number  
+
+- **Bill Serial Number**: An integer (preferably unsigned) representing the bill serial number, starting from 1. This number increments each time a new bill is generated. It is also used to create a unique file name for each completed bill saved to the file system.  
+
+> **Note:**  
+Use the function `makeBillFileName` provided in the `Utils` module to generate unique file names. This function receives a bill number and creates a file name in the format `bill_<billNo>.txt`.   
+```cpp
+char* makeBillFileName(char* billFilename, size_t billNo) const;
+```  
+
+---
+
+#### Food and Drink Dynamic Arrays  
+
+- **Food Array**: A `Food` pointer used to store a dynamically allocated array of food items loaded from the food data file.  
+- **Drink Array**: A `Drink` pointer used to store a dynamically allocated array of drink items loaded from the drinks data file.
+
+---
+
+#### Billable Array of Pointers  
+
+- **Bill Items**: An array of `Billable` pointers, with a size defined by the `MaximumNumberOfBillItems` constant in `constants.h`. When a food or drink item is about to be ordered, a dynamic copy of the selected item is created and stored in the next available spot in this array. The item is then customized to match the customer’s order.
+
+---
+
+### Private Methods  
+
+#### **Bill Title Print**  
+This method prints a header for a bill.  
+
+- **Parameters**:  
+  - A reference to an `ostream` object.  
+
+- **Description**:  
+  The method prints the bill title in the following format, using the `Bill Number` attribute. For example, if the bill number is `35`, the output would look like:  
+
+  ```text
+  Bill # 035 =============================<NEWLINE>
+  ```  
+
+---
+
+#### **Print Totals**  
+This method prints the footer for a bill.  
+
+- **Parameters**:  
+  - A reference to an `ostream` object.  
+  - A `double` value representing the total amount.  
+
+- **Description**:  
+  The method prints the total, applicable tax, and the grand total into the provided `ostream` object using the `Tax` constant value defined in `constants.h`. For example, if the total value is `16.88`, the output would be:  
+
+  ```text
+                       Total:        16.88
+                       Tax:           2.19
+                       Total+Tax:    19.07
+  ========================================<NEWLINE>
+  ```
+
+---
+
+#### **`size_t countRecords(const char* file) const`**  
+
+This function calculates the number of records in a file by counting the newline characters.  
+
+- **Parameters**:  
+  - A constant character pointer (`const char*`) representing the file name.  
+
+- **Return Value**:  
+  - Returns the count of newline characters (`size_t`), representing the number of records in the file.  
+
+- **Implementation**:  
+  Use the following pseudocode to implement this function:  
+
+  ```text
+  set a newline counter to zero
+  open an ifstream using the file argument value
+  while the file is not in a failure state
+     read one character
+     if the file is not in failure state and character is a newline
+        add one to the newline counter
+  end while
+  return the newline counter
+  ```  
+
+- **Purpose**:  
+  This method is essential for determining the size of dynamically allocated arrays for food and drink items by counting the number of records in their respective files.
+
+
+### Constructor and Destructor  
+
+#### **Constructor**  
+
+The `Ordering` class is constructed using two C-strings representing the drinks and foods data file names.  
+
+**Steps for Implementation:**  
+
+1. **Count Records:**  
+   - Determine the number of records in the drinks and foods data files by using the `countRecords` method. Store these counts in two local variables.  
+
+2. **Open Files for Reading:**  
+   - Open the drinks and foods data files using `ifstream`.  
+
+3. **Dynamic Array Allocation:**  
+   - Create two dynamic arrays:  
+     - A `Food` array, pointed to by the corresponding attribute of the `Ordering` class.  
+     - A `Drink` array, pointed to by the corresponding attribute of the `Ordering` class.  
+
+4. **Reading Data:**  
+   - If both files are successfully opened:  
+     - Loop through the drinks array, calling the `read` method on each element until one of the following occurs:  
+       - The number of reads matches the number of records in the file.  
+       - A read operation fails.  
+     - Repeat the same process for the foods array.  
+
+5. **Validation and Cleanup:**  
+   - If the number of successfully read records does not match the number of records in either file:  
+     - Revert the operation by **deleting** both arrays.  
+     - Set the pointers for both arrays to `nullptr` (safe empty state).  
+   - Otherwise:  
+     - Set the corresponding attributes of the `Ordering` class to the number of records successfully read.  
+
+---
+
+#### **Destructor**  
+
+The destructor ensures proper cleanup of dynamically allocated memory to prevent memory leaks.  
+
+**Steps for Implementation:**  
+
+1. **Delete Dynamic Arrays:**  
+   - Delete the dynamic arrays for foods and drinks by using the `delete[]` operator.  
+
+2. **Delete Billable Items:**  
+   - Loop through the `Billable` array of pointers, deleting each element up to the number of items currently in the bill.  
+
+---
+
+### Queries  
+
+> **Note:** Queries cannot change the state of the class.
+
+
+#### **Boolean Conversion Operator Overload**  
+This operator provides a safe empty state indicator.
+
+- **Description:**  
+  - This method does not modify the class.  
+  - Returns `true` if both the drinks and foods dynamic arrays are not `nullptr`.  
+
+---
+
+#### **Number of Bill Items**  
+
+- **Description:**  
+  - Create a method to return the number of items currently in the bill.  
+  - This value is stored in the `Billable` counter attribute of the class.  
+
+---
+
+#### **Has Unsaved Bill**  
+
+- **Description:**  
+  - Create a method that returns a boolean value.  
+  - This method should return `true` if the number of bill items (tracked by the `Billable` counter attribute) is greater than zero.  
+---
+
+### Methods to Be Called in the Main Application's Menu  
+
+These methods handle specific tasks based on the options selected in the main application's menu.  
+
+
+#### **List Food Method** *(does not modify the class)*  
+
+- **Description:**  
+  - Prints the following header:  
+    ```text
+    List Of Avaiable Meals
+    ========================================<NEWLINE>
+    ```  
+  - Loops through the `foods` dynamic array and prints each item on a separate line using its `print` method.  
+  - Prints the following footer:  
+    ```text
+    ========================================<NEWLINE>
+    ```  
+
+---
+
+#### **List Drinks Method** *(does not modify the class)*  
+
+- **Description:**  
+  - Works exactly like the `List Food` method but operates on the `drinks` dynamic array.  
+
+---
+
+#### **Order Food Method**  
+
+- **Description:**  
+  - Creates a `Menu` object with:  
+    - **Title**: `"Food Menu"`  
+    - **Exit Option**: `"Back to Order"`  
+    - **Indentations**: `2`  
+  - Populates the `Menu` object with the names of the food items from the `foods` dynamic array.  
+  - Displays the menu and receives the waiter's selection.  
+  - If the selection is not zero:  
+    - Creates a dynamic copy of the selected food item and assigns it to the next available element in the `Bill Items` array (i.e. the `Billable` array of pointers).  
+    - Calls the `order` method on the `Billable` item to customize the order.  
+    - If `order` returns `true`, increments the `number of bill items` attribute.  
+    - If `order` returns `false`, deletes the dynamically created food item to revert the operation.  
+
+---
+
+#### **Order Drink Method**  
+
+- **Description:**  
+  - Similar to the `Order Food` method but for drinks:  
+    - Creates a `Menu` object with:  
+      - **Title**: `"Drink Menu"`  
+      - **Exit Option**: `"Back to Order"`  
+      - **Indentations**: `2`  
+    - Populates the `Menu` object with the names of the drink items from the `drinks` dynamic array.  
+    - Displays the menu and receives the waiter's selection.  
+    - If the selection is not zero:  
+      - Creates a dynamic copy of the selected drink item and assigns it to the next available element in the `Bill Items` array.  
+      - Calls the `order` method on the `Billable` item to customize the order.  
+      - If `order` returns `true`, increments the `number of bill items` attribute.  
+      - If `order` returns `false`, deletes the dynamically created drink item to revert the operation.  
+
+---
+
+#### **Print Bill Method** *(does not modify the class)*  
+
+- **Parameters:**  
+  - Receives a reference to an `ostream` object.  
+
+- **Description:**  
+  - Creates a `double` variable to track the total price of the bill.  
+  - Prints the bill title using the `Bill Title Print` method.  
+  - Loops through the elements in the `Bill Items` array:  
+    - Prints each item in a separate line using its `print` method.  
+    - Adds the price of each item to the total.  
+  - Prints the totals using the `Print Totals` method.  
+
+---
+
+#### **Reset Bill**  
+
+- **Description:**  
+  - Uses the `makeBillFileName` function from the `Utils` module to generate a unique file name for the current bill using the `bill number` attribute.  
+  - Opens a file for writing using the generated file name (`ofstream`).  
+  - Prints the current bill into the opened file using the `Print Bill` method.  
+  - Displays the following message (for example, if the current bill number is 20):  
+    ```text
+    Saved bill number 20
+    Starting bill number 21
+    ```  
+  - Deletes all dynamically created elements in the `Bill Items` array.  
+  - Increments the `bill number` attribute by one.  
+  - Resets the `number of bill items` attribute to zero.  
+
+---
+
+## ms4 tester program
+
+TBA
+
+### Sample Execution
+
+TBA
+
+### Data Entry for ms3
+
+TBA
+
+## MS4 Submission 
+
+Not Opened
 
 ## [Back to milestones](#milestones)
