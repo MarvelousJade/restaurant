@@ -2,6 +2,8 @@
 - Version 0.81 
   Milestone 4 preview  
   ms3: The wrong `correct_output.txt` was uploaded and it is now corrected.
+- Version 0.82
+  MS4 Overview posted
 ## Objective 
 In this project, you will build an application that enables waiters to take customer orders for food and drinks and generate a bill upon the order's completion. Each bill will have a unique number, and once an order is finalized, the bill will be saved in a separate file named according to its bill number.
 
@@ -13,7 +15,7 @@ In this project, you will build an application that enables waiters to take cust
 | [MS1](#milestone-1) | V1.0 | open | [Video](https://youtu.be/fLKefJo04ME) |
 | [MS2](#milestone-2) | V1.0 | open | [Video](https://youtu.be/3TFA6RT0O4U) |
 | [MS3](#milestone-3) | V1.1  | open<br />correct_output.txt corrected  | [Video](https://youtu.be/YqiOuSdU4zA) |
-| [MS4](#milestone-4) | V1.0  | preview |  |
+| [MS4](#milestone-4) | V1.0  | preview | [Video](https://youtu.be/n-hnBp8Otms) |
 | [MS5](#milestone-5) | V1.0 |  |  |
 
 For this project, you will develop an application that enables waiters to take customer orders for food and drinks, and generate a bill upon completion of the order.
