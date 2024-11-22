@@ -10,10 +10,11 @@
 // Revision History
 // -----------------------------------------------------------
 // Name            Date            Reason
-//
+// Shaoyu Fan      2024-11-13      Preliminary release
 /////////////////////////////////////////////////////////////////
 ***********************************************************************/
 #include "Menu.h"
+#include <cstdio>
 #include <iostream>
 using namespace std;
 using namespace seneca;
