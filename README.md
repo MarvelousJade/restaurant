@@ -3,6 +3,9 @@
   MS4 Overview posted
 - Version 0.9
   MS4 Open
+- Version 0.91
+  Method names added.
+ 
 ## Objective 
 In this project, you will build an application that enables waiters to take customer orders for food and drinks and generate a bill upon the order's completion. Each bill will have a unique number, and once an order is finalized, the bill will be saved in a separate file named according to its bill number.
 
@@ -942,6 +945,7 @@ This operator provides a safe empty state indicator.
 ---
 
 #### **Number of Bill Items**  
+Method name: 'noOfBillItems'
 
 - **Description:**  
   - Create a method to return the number of items currently in the bill.  
@@ -950,6 +954,7 @@ This operator provides a safe empty state indicator.
 ---
 
 #### **Has Unsaved Bill**  
+Method name: `hasUnsavedBill`
 
 - **Description:**  
   - Create a method that returns a boolean value.  
@@ -962,7 +967,7 @@ These methods handle specific tasks based on the options selected in the main ap
 
 
 #### **List Food Method** *(does not modify the class)*  
-
+Method name: `listFoods`
 - **Description:**  
   - Prints the following header:  
     ```text
@@ -978,13 +983,14 @@ These methods handle specific tasks based on the options selected in the main ap
 ---
 
 #### **List Drinks Method** *(does not modify the class)*  
-
+Method name: `ListDrinks`
 - **Description:**  
   - Works exactly like the `List Food` method but operates on the `drinks` dynamic array.  
 
 ---
 
 #### **Order Food Method**  
+Method name: `orderFood`
 
 - **Description:**  
   - Creates a `Menu` object with:  
@@ -1002,6 +1008,7 @@ These methods handle specific tasks based on the options selected in the main ap
 ---
 
 #### **Order Drink Method**  
+Method name: `orderDrink`
 
 - **Description:**  
   - Similar to the `Order Food` method but for drinks:  
@@ -1020,6 +1027,7 @@ These methods handle specific tasks based on the options selected in the main ap
 ---
 
 #### **Print Bill Method** *(does not modify the class)*  
+Method name: `printBill`
 
 - **Parameters:**  
   - Receives a reference to an `ostream` object.  
@@ -1035,6 +1043,7 @@ These methods handle specific tasks based on the options selected in the main ap
 ---
 
 #### **Reset Bill**  
+Method name: `resetBill`
 
 - **Description:**  
   - Uses the `makeBillFileName` function from the `Utils` module to generate a unique file name for the current bill using the `bill number` attribute.  
@@ -1064,7 +1073,7 @@ These methods handle specific tasks based on the options selected in the main ap
 Follow the instructions of the tester
 
 
-## MS3 Submission 
+## MS4 Submission 
 
 > If you would like to successfully complete the project and be on time, **start early** and try to meet all the due dates of the milestones.
 
