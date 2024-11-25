@@ -1,9 +1,8 @@
 # Project: Dine-In Digital, A Restaurant Ordering System
-- Version 0.81 
-  Milestone 4 preview  
-  ms3: The wrong `correct_output.txt` was uploaded and it is now corrected.
 - Version 0.82
   MS4 Overview posted
+- Version 0.9
+  MS4 Open
 ## Objective 
 In this project, you will build an application that enables waiters to take customer orders for food and drinks and generate a bill upon the order's completion. Each bill will have a unique number, and once an order is finalized, the bill will be saved in a separate file named according to its bill number.
 
@@ -15,7 +14,7 @@ In this project, you will build an application that enables waiters to take cust
 | [MS1](#milestone-1) | V1.0 | open | [Video](https://youtu.be/fLKefJo04ME) |
 | [MS2](#milestone-2) | V1.0 | open | [Video](https://youtu.be/3TFA6RT0O4U) |
 | [MS3](#milestone-3) | V1.1  | open<br />correct_output.txt corrected  | [Video](https://youtu.be/YqiOuSdU4zA) |
-| [MS4](#milestone-4) | V1.0  | preview | [Video](https://youtu.be/n-hnBp8Otms) |
+| [MS4](#milestone-4) | V1.0  | open | [Video](https://youtu.be/n-hnBp8Otms) |
 | [MS5](#milestone-5) | V1.0 |  |  |
 
 For this project, you will develop an application that enables waiters to take customer orders for food and drinks, and generate a bill upon completion of the order.
@@ -33,7 +32,7 @@ This project will be done in 5 milestones and each milestone will have its due d
 | MS1 | 10% | Nov 10 | gets full mark even if 1 week late. gets 0% afterwards|
 | MS2 | 10% | Nov 15 | gets full mark even if 1 week late. gets 0% afterwards|
 | MS3 | 10% | Nov 23 | gets full mark even if 1 week late. gets 0% afterwards|
-| MS4 | 10% | TBA | gets full mark even if 1 week late. gets 0% afterwards|
+| MS4 | 10% | Nov 30 | gets full mark even if 1 week late. gets 0% afterwards|
 | MS5 | 60% |  Dec 5 | See below|
 
 > To make the final submission of the project easier and to make it possible to partially submit a project we have divided the submission of milestone 5 into six small ones. Each submission is worth 10% of the project mark. Your project will be marked only if you have all four milestones and at least have one of the 6 six submissions of milestone 5. 
@@ -1054,18 +1053,47 @@ These methods handle specific tasks based on the options selected in the main ap
 
 ## ms4 tester program
 
-TBA
+[ms4.cpp](ms4/ms4.cpp)
 
 ### Sample Execution
 
-TBA
+[correct_output.txt](ms4/correct_output.txt)
 
-### Data Entry for ms3
+### Data Entry for ms4
 
-TBA
+Follow the instructions of the tester
 
-## MS4 Submission 
 
-Not Opened
+## MS3 Submission 
+
+> If you would like to successfully complete the project and be on time, **start early** and try to meet all the due dates of the milestones.
+
+Upload your source code and the tester program (**Utils.cpp, Utils.h, Menu.h , Menu.cpp, Billable.h, Billable.cpp, Drink.h, Drink.cpp, Food.h, Food.cpp, Ordering.h, Ordering.cpp and ms4.cpp**) to your `matrix` account. Compile and run your code using the `g++` compiler [as shown in the introduction](#compiling-and-testing-your-program) and make sure that everything works properly.
+
+Then, run the following command from your account (replace `profname.proflastname` with your professor’s Seneca userid):
+```
+~profname.proflastname/submit 2??/prj/m4
+```
+and follow the instructions.
+
+- *2??* is replaced with your subject code
+
+
+### The submit program's options:
+```bash
+~prof_name.prof_lastname/submit DeliverableName [-submission options]<ENTER>
+[-submission option] acceptable values:
+  "-due":
+       Shows due dates only
+       This option cannot be used in combination with any other option.
+  "-skip_spaces":
+       Do the submission regardless of incorrect horizontal spacing.
+       This option may attract penalty.
+  "-skip_blank_lines":
+       Do the submission regardless of incorrect vertical spacing.
+       This option may attract penalty.
+  "-feedback":
+       Check the program execution without submission.
+```
 
 ## [Back to milestones](#milestones)
