@@ -10,7 +10,7 @@ namespace seneca {
 	  m_exitOption(exitOption, m_indentationsCount, m_indentationSize, 0),
 	  m_entryPrompt("> ", m_indentationsCount, m_indentationSize, -1) 
 	{
-		for(int i =0; i < MaximumNumberOfMenuItems; i++) {
+		for(size_t i =0; i < MaximumNumberOfMenuItems; i++) {
 			m_menuItems[i] = nullptr;		 
 		}
 	}
@@ -26,7 +26,7 @@ namespace seneca {
 			m_title.display(cout);
 			cout << "\n";
 		}
-		for(int i =0; i < m_menuItemsCount; i++) {
+		for(size_t i =0; i < m_menuItemsCount; i++) {
 			m_menuItems[i]->display(cout);
 			cout << "\n";
 		}

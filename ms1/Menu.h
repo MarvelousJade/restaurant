@@ -27,7 +27,7 @@ namespace seneca {
    class Menu {
       size_t m_indentationsCount;
       size_t m_indentationSize;
-      int m_menuItemsCount;
+      size_t m_menuItemsCount;
       MenuItem m_title;
       MenuItem m_exitOption;
       MenuItem m_entryPrompt;
