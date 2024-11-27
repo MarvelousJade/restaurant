@@ -1,4 +1,5 @@
 #include "Menu.h"
+#include <cstddef>
 using namespace std;
 namespace seneca {
 	Menu::Menu(const char* title, const char* exitOption, size_t indentationsCount, size_t indentationSize) 
@@ -19,6 +20,19 @@ namespace seneca {
 			m_menuItemsCount++;
 		}		
 		return *this;
+	}
+	size_t Menu::select() const{
+		m_title.display(cout);
+		for(int i =0; i < m_menuItemsCount; i++) {
+			m_menuItems[i]->display(cout);
+		}
+		m_exitOption.display(cout);
+		m_entryPrompt.display(cout);
+		return ut.getInt();	
+	}
+	size_t operator<<(ostream& ostr, const Menu& menu) {
+		if(&ostr == &cout) return menu.select();
+		return 0;
 	}
 	void MenuItem::setEmpty() {
 		m_content = nullptr;

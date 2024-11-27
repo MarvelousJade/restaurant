@@ -37,11 +37,17 @@ namespace seneca {
           const char* exitOption = "Exit", 
           size_t indentationsCount = 0, 
           size_t indentationSize = 3);
-;
+
       Menu& operator<<(const char*);
+
+      // Prevent copying
       /*Menu(const Menu&) = delete;*/
       /*Menu& operator=(const Menu&) = delete;*/
+
+      size_t select() const;
    };
+
+   size_t operator<<(std::ostream& ostr, const Menu& menu);
 }
 #endif // !SENECA_MENU_H
 

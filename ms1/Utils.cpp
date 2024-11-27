@@ -55,5 +55,10 @@ namespace seneca {
       }
       return cstring && *cstring == 0;
    }
+   int Utils::getInt() {
+      int validInt;
+      cin >> validInt;
+      return validInt;
+   }
 
 }
