@@ -5,7 +5,7 @@ using namespace std;
 namespace seneca {
 	void MenuItem::setEmpty() {
 		m_content = nullptr;
-		m_indentations = 0;
+		m_indentationsCount = 0;
 		m_indentationSize = 0;
 		m_rowNumber = 0;
 	}
@@ -19,7 +19,7 @@ namespace seneca {
 		}
 		else {
 			m_content = ut.alocpy(content);
-			m_indentations = Indentations;
+			m_indentationsCount = Indentations;
 			m_indentationSize = IndentationSize;
 			m_rowNumber = rowNumber;
 		}
@@ -27,7 +27,7 @@ namespace seneca {
 	MenuItem::~MenuItem() {
 		delete[] m_content;
 		m_content = nullptr;
-		m_indentations = 0;
+		m_indentationsCount = 0;
 		m_indentationSize = 0;
 		m_rowNumber = 0;
 	}
@@ -36,7 +36,7 @@ namespace seneca {
 	}
 	ostream& MenuItem::display(ostream& ostr) const {
 		if (*this) {
-			for (size_t i = 0; i < m_indentations; i++) {
+			for (size_t i = 0; i < m_indentationsCount; i++) {
 				for (size_t j = 0; j < m_indentationSize; j++) {
 					ostr << " ";
 				}

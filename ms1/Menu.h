@@ -3,13 +3,16 @@
 #include <iostream>
 
 namespace seneca {
+   class Manu {
+      friend class MenuItem; 
+   };
    class MenuItem {
       char* m_content;
-      size_t m_indentations;
+      size_t m_indentationsCount;
       size_t m_indentationSize;
       int m_rowNumber;
       void setEmpty();
-   public:
+
       MenuItem(const char*,size_t,size_t, int);
       MenuItem(const MenuItem&) = delete;
       MenuItem& operator=(const MenuItem&) = delete;
