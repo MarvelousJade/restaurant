@@ -1,8 +1,25 @@
 #include "Menu.h"
-#include "Utils.h"
-#include "constants.h"
 using namespace std;
 namespace seneca {
+	Menu::Menu(const char* title, const char* exitOption, size_t indentationsCount, size_t indentationSize) 
+	: m_indentationsCount(indentationsCount),
+	  m_indentationSize(indentationSize),
+	  m_menuItemsCount(0),
+	  m_title(title, m_indentationsCount, m_indentationSize, 1),
+	  m_exitOption(exitOption, m_indentationsCount, m_indentationSize, 0),
+	  m_entryPrompt("> ", m_indentationsCount, m_indentationSize, 2) 
+	{
+		for(int i =0; i < MaximumNumberOfMenuItems; i++) {
+			m_menuItems[i] = nullptr;		 
+		}
+	}
+	Menu& Menu::operator<<(const char* content){
+		if(m_menuItemsCount < MaximumNumberOfMenuItems) {
+			m_menuItems[m_menuItemsCount] = new MenuItem(content, m_indentationsCount, m_indentationSize, m_menuItemsCount + 1);
+			m_menuItemsCount++;
+		}		
+		return *this;
+	}
 	void MenuItem::setEmpty() {
 		m_content = nullptr;
 		m_indentationsCount = 0;
