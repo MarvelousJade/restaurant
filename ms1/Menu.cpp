@@ -22,8 +22,10 @@ namespace seneca {
 		return *this;
 	}
 	size_t Menu::select() const{
-		m_title.display(cout);
-		cout << "\n";
+		if(m_title) {
+			m_title.display(cout);
+			cout << "\n";
+		}
 		for(int i =0; i < m_menuItemsCount; i++) {
 			m_menuItems[i]->display(cout);
 			cout << "\n";
@@ -35,6 +37,8 @@ namespace seneca {
 	}
 	size_t operator<<(ostream& ostr, const Menu& menu) {
 		if(&ostr == &cout) return menu.select();
+		cin.clear();
+		cin.ignore(2000, '\n');
 		return 0;
 	}
 	void MenuItem::setEmpty() {
