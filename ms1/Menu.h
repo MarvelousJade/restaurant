@@ -37,6 +37,7 @@ namespace seneca {
           const char* exitOption = "Exit", 
           size_t indentationsCount = 0, 
           size_t indentationSize = 3);
+      ~Menu();
 
       Menu& operator<<(const char*);
 

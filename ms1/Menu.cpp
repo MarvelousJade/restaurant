@@ -14,6 +14,12 @@ namespace seneca {
 			m_menuItems[i] = nullptr;		 
 		}
 	}
+	Menu::~Menu() {
+		for(size_t i =0; i < m_menuItemsCount; i++) {
+				delete[] m_menuItems[i];		 
+				m_menuItems[i] = nullptr;
+			}
+	}
 	Menu& Menu::operator<<(const char* content){
 		if(m_menuItemsCount < MaximumNumberOfMenuItems) {
 			m_menuItems[m_menuItemsCount] = new MenuItem(content, m_indentationsCount, m_indentationSize, m_menuItemsCount + 1);
