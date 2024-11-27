@@ -6,9 +6,9 @@ namespace seneca {
 	: m_indentationsCount(indentationsCount),
 	  m_indentationSize(indentationSize),
 	  m_menuItemsCount(0),
-	  m_title(title, m_indentationsCount, m_indentationSize, 1),
+	  m_title(title, m_indentationsCount, m_indentationSize, -1),
 	  m_exitOption(exitOption, m_indentationsCount, m_indentationSize, 0),
-	  m_entryPrompt("> ", m_indentationsCount, m_indentationSize, 2) 
+	  m_entryPrompt("> ", m_indentationsCount, m_indentationSize, -1) 
 	{
 		for(int i =0; i < MaximumNumberOfMenuItems; i++) {
 			m_menuItems[i] = nullptr;		 
@@ -23,10 +23,13 @@ namespace seneca {
 	}
 	size_t Menu::select() const{
 		m_title.display(cout);
+		cout << "\n";
 		for(int i =0; i < m_menuItemsCount; i++) {
 			m_menuItems[i]->display(cout);
+			cout << "\n";
 		}
 		m_exitOption.display(cout);
+		cout << "\n";
 		m_entryPrompt.display(cout);
 		return ut.getInt();	
 	}
