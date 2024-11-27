@@ -1,9 +1,11 @@
 # Project: Dine-In Digital, A Restaurant Ordering System
-- Version 0.81 
-  Milestone 4 preview  
-  ms3: The wrong `correct_output.txt` was uploaded and it is now corrected.
 - Version 0.82
   MS4 Overview posted
+- Version 0.9
+  MS4 Open
+- Version 0.91
+  Method names added.
+ 
 ## Objective 
 In this project, you will build an application that enables waiters to take customer orders for food and drinks and generate a bill upon the order's completion. Each bill will have a unique number, and once an order is finalized, the bill will be saved in a separate file named according to its bill number.
 
@@ -15,8 +17,8 @@ In this project, you will build an application that enables waiters to take cust
 | [MS1](#milestone-1) | V1.0 | open | [Video](https://youtu.be/fLKefJo04ME) |
 | [MS2](#milestone-2) | V1.0 | open | [Video](https://youtu.be/3TFA6RT0O4U) |
 | [MS3](#milestone-3) | V1.1  | open<br />correct_output.txt corrected  | [Video](https://youtu.be/YqiOuSdU4zA) |
-| [MS4](#milestone-4) | V1.0  | preview | [Video](https://youtu.be/n-hnBp8Otms) |
-| [MS5](#milestone-5) | V1.0 |  |  |
+| [MS4](#milestone-4) | V1.0  | open | [Video](https://youtu.be/n-hnBp8Otms) |
+| [MS5](#milestone-5-the-final-milestone) | V1.0 | Preview | [Video](https://youtu.be/jBJkNrWciLQ) |
 
 For this project, you will develop an application that enables waiters to take customer orders for food and drinks, and generate a bill upon completion of the order.
 
@@ -33,19 +35,19 @@ This project will be done in 5 milestones and each milestone will have its due d
 | MS1 | 10% | Nov 10 | gets full mark even if 1 week late. gets 0% afterwards|
 | MS2 | 10% | Nov 15 | gets full mark even if 1 week late. gets 0% afterwards|
 | MS3 | 10% | Nov 23 | gets full mark even if 1 week late. gets 0% afterwards|
-| MS4 | 10% | TBA | gets full mark even if 1 week late. gets 0% afterwards|
+| MS4 | 10% | Nov 30 | gets full mark even if 1 week late. gets 0% afterwards|
 | MS5 | 60% |  Dec 5 | See below|
 
 > To make the final submission of the project easier and to make it possible to partially submit a project we have divided the submission of milestone 5 into six small ones. Each submission is worth 10% of the project mark. Your project will be marked only if you have all four milestones and at least have one of the 6 six submissions of milestone 5. 
 
 |Milestone 5<br/> Divided into<br/>Six submission| Mark | Due date | Submission Policy|
 |:------|:---:|:---:|-------|
-| m51 (Functional Menu system) | 10% | Dec 5| 10% penalty for each day being late up to 5 days|
-| m52 (Fool proof data entry) | 10% |Dec 5| 10% penalty for each day being late up to 5 days|
-| m53 (List Food and Drink) | 10% | Dec 5| 10% penalty for each day being late up to 5 days|
-| m54 (Order Food And Drink) | 10% | Dec 5| 10% penalty for each day being late up to 5 days|
-| m55 (Print and save bill) | 10% | Dec 5| 10% penalty for each day being late up to 5 days|
-| m56 (Reset Bill and Safe exit) | 10% | Dec 5| 10% penalty for each day being late up to 5 days|
+| m51 (List Food And Drink) | 10% | Dec 5| 10% penalty for each day being late up to 5 days|
+| m53 (Order Drink) | 10% |Dec 5| 10% penalty for each day being late up to 5 days|
+| m53 (Order Food) | 10% | Dec 5| 10% penalty for each day being late up to 5 days|
+| m54 (Display Bill) | 10% | Dec 5| 10% penalty for each day being late up to 5 days|
+| m55 (Reset Exit and Saved Bill) | 10% | Dec 5| 10% penalty for each day being late up to 5 days|
+| m56 (Fool Proofing and Bad Data file) | 10% | Dec 5| 10% penalty for each day being late up to 5 days|
 
 > The first 4 milestones will not be marked based on the code but on their success and their timely submissions. You may modify or debug your previous code as you are going through the milestones. The only milestone that is going to be scrutinized based on your code will be milestone 5. If you require any feedback on your first four milestones you need to ask your professor to do so.
 
@@ -943,6 +945,7 @@ This operator provides a safe empty state indicator.
 ---
 
 #### **Number of Bill Items**  
+Method name: 'noOfBillItems'
 
 - **Description:**  
   - Create a method to return the number of items currently in the bill.  
@@ -951,6 +954,7 @@ This operator provides a safe empty state indicator.
 ---
 
 #### **Has Unsaved Bill**  
+Method name: `hasUnsavedBill`
 
 - **Description:**  
   - Create a method that returns a boolean value.  
@@ -963,7 +967,7 @@ These methods handle specific tasks based on the options selected in the main ap
 
 
 #### **List Food Method** *(does not modify the class)*  
-
+Method name: `listFoods`
 - **Description:**  
   - Prints the following header:  
     ```text
@@ -979,13 +983,14 @@ These methods handle specific tasks based on the options selected in the main ap
 ---
 
 #### **List Drinks Method** *(does not modify the class)*  
-
+Method name: `ListDrinks`
 - **Description:**  
   - Works exactly like the `List Food` method but operates on the `drinks` dynamic array.  
 
 ---
 
 #### **Order Food Method**  
+Method name: `orderFood`
 
 - **Description:**  
   - Creates a `Menu` object with:  
@@ -1003,6 +1008,7 @@ These methods handle specific tasks based on the options selected in the main ap
 ---
 
 #### **Order Drink Method**  
+Method name: `orderDrink`
 
 - **Description:**  
   - Similar to the `Order Food` method but for drinks:  
@@ -1021,6 +1027,7 @@ These methods handle specific tasks based on the options selected in the main ap
 ---
 
 #### **Print Bill Method** *(does not modify the class)*  
+Method name: `printBill`
 
 - **Parameters:**  
   - Receives a reference to an `ostream` object.  
@@ -1036,6 +1043,7 @@ These methods handle specific tasks based on the options selected in the main ap
 ---
 
 #### **Reset Bill**  
+Method name: `resetBill`
 
 - **Description:**  
   - Uses the `makeBillFileName` function from the `Utils` module to generate a unique file name for the current bill using the `bill number` attribute.  
@@ -1054,18 +1062,485 @@ These methods handle specific tasks based on the options selected in the main ap
 
 ## ms4 tester program
 
-TBA
+[ms4.cpp](ms4/ms4.cpp)
 
 ### Sample Execution
 
-TBA
+[correct_output.txt](ms4/correct_output.txt)
 
-### Data Entry for ms3
+### Data Entry for ms4
 
-TBA
+Follow the instructions of the tester
+
 
 ## MS4 Submission 
 
-Not Opened
+> If you would like to successfully complete the project and be on time, **start early** and try to meet all the due dates of the milestones.
+
+Upload your source code and the tester program (**Utils.cpp, Utils.h, Menu.h , Menu.cpp, Billable.h, Billable.cpp, Drink.h, Drink.cpp, Food.h, Food.cpp, Ordering.h, Ordering.cpp and ms4.cpp**) to your `matrix` account. Compile and run your code using the `g++` compiler [as shown in the introduction](#compiling-and-testing-your-program) and make sure that everything works properly.
+
+Then, run the following command from your account (replace `profname.proflastname` with your professor’s Seneca userid):
+```
+~profname.proflastname/submit 2??/prj/m4
+```
+and follow the instructions.
+
+- *2??* is replaced with your subject code
+
+
+### The submit program's options:
+```bash
+~prof_name.prof_lastname/submit DeliverableName [-submission options]<ENTER>
+[-submission option] acceptable values:
+  "-due":
+       Shows due dates only
+       This option cannot be used in combination with any other option.
+  "-skip_spaces":
+       Do the submission regardless of incorrect horizontal spacing.
+       This option may attract penalty.
+  "-skip_blank_lines":
+       Do the submission regardless of incorrect vertical spacing.
+       This option may attract penalty.
+  "-feedback":
+       Check the program execution without submission.
+```
 
 ## [Back to milestones](#milestones)
+
+# Milestone 5: The Final Milestone  
+
+In this milestone, you will use all the modules you have created so far to build a complete application for the "Dine-In Digital" system. This milestone brings together the logic for menu navigation, order processing, bill handling, and dynamic memory management.  
+
+The goal is to create a program that mimics the behavior demonstrated in the `appDemo()` function provided earlier. Follow the instructions below to structure your program and meet the milestone's requirements.  
+
+---
+
+## Program Requirements  
+
+Your program should use the `Menu` and `Ordering` modules to create a fully functioning application that supports the following tasks:  
+
+---
+
+### Initialization  
+
+1. **Data Files**:  
+   - Your program must load the food and drink data from two CSV files:  
+     - `"drinks.csv"` for drinks.  
+     - `"foods.csv"` for food items.  
+   - Pass the file names to the `Ordering` class during initialization.  
+
+2. **Validation**:  
+   - If the `Ordering` object fails to load the data (i.e., it enters a safe empty state), display an error message:  
+     ```text
+     Failed to open data files or the data files are corrupted!
+     ```  
+   - Terminate the program if the data files are not loaded successfully.  
+
+---
+
+### Menus  
+
+#### Main Menu  
+
+- **Menu Title**: `"Seneca Restaurant"`  
+- **Exit Option**: `"End Program"`  
+- **Menu Options**:  
+  1. **Order**  
+  2. **Print Bill**  
+  3. **Start a New Bill**  
+  4. **List Foods**  
+  5. **List Drinks**  
+
+#### Sub-Menu for Ordering  
+
+- **Menu Title**: `"Order Menu"`  
+- **Exit Option**: `"Back to main menu"`  
+- **Menu Options**:  
+  1. **Food**  
+  2. **Drink**  
+
+#### Confirmation Menu  
+
+- **Menu Title**: `"You have bills that are not saved. Are you sure you want to exit?"`  
+- **Exit Option**: `"No"`  
+- **Menu Option**:  
+  1. **Yes**  
+
+---
+
+### Menu Functionality  
+
+1. **Order Food**  
+   - When the "Food" option is selected from the order sub-menu:  
+     - Call the `orderFood` method of the `Ordering` object to handle food ordering.  
+
+2. **Order Drink**  
+   - When the "Drink" option is selected from the order sub-menu:  
+     - Call the `orderDrink` method of the `Ordering` object to handle drink ordering.  
+
+3. **Print Bill**  
+   - When the "Print Bill" option is selected from the main menu:  
+     - Call the `printBill` method of the `Ordering` object to print the current bill to the console.  
+
+4. **Start a New Bill**  
+   - When the "Start a New Bill" option is selected:  
+     - Call the `resetBill` method of the `Ordering` object to save the current bill to a file and start a new one.  
+
+5. **List Foods**  
+   - When the "List Foods" option is selected:  
+     - Call the `listFoods` method of the `Ordering` object to display all food items.  
+
+6. **List Drinks**  
+   - When the "List Drinks" option is selected:  
+     - Call the `ListDrinks` method of the `Ordering` object to display all drink items.  
+
+---
+
+### Program Exit  
+
+1. **Unsaved Bills Warning**:  
+   - If the user attempts to exit the program (selects "End Program") while there are unsaved items in the bill:  
+     - Display a confirmation menu asking:  
+       ```text
+       You have bills that are not saved. Are you sure you want to exit?
+       ```  
+     - The menu should have the following options:  
+       1. **Yes**  
+       0. **No**  
+
+   - If the user selects "No," return to the main menu.  
+   - If the user selects "Yes," terminate the program.  
+
+2. **Normal Exit**:  
+   - If there are no unsaved bills, allow the program to terminate without additional prompts.  
+
+---
+
+### User Input Validation  
+
+Your program should use foolproof input handling for all menu interactions. This ensures the program does not crash due to invalid user input. Follow these steps for validation:
+
+#### Example Scenario  
+##### Execution sample:
+```text
+Seneca Restaurant 
+ 1- Order
+ 2- Print Bill
+ 3- Start a New Bill
+ 4- List Foods
+ 5- List Drinks
+ 0- End Program
+><ENTER> 
+You must enter a value: abc<ENTER> 
+Invalid integer: 1 abc<ENTER> 
+Only an integer please: -1<ENTER> 
+Invalid value: [0<= value <=5], try again: 6<ENTER> 
+Invalid value: [0<= value <=5], try again: 0<ENTER>
+```
+##### Explanation
+Given the following menu:  
+```text
+Seneca Restaurant
+ 1- Order
+ 2- Print Bill
+ 3- Start a New Bill
+ 4- List Foods
+ 5- List Drinks
+ 0- End Program
+> 
+```  
+
+If the user inputs invalid data, the program should respond as follows and wait for re-entry:  
+1. **Empty Input:**  
+   ```text
+   You must enter a value:
+   ```  
+2. **Non-Integer Input:**  
+   ```text
+   Invalid integer: 
+   ```  
+3. **Trailing Characters After Integer:**  
+   ```text
+   Only an integer please: 
+   ```  
+4. **Out of Range Input:**  
+   ```text
+   Invalid value: [0 <= value <= 5], try again: 
+   ```  
+> 0 and 5 are lower and upper acceptable limits in this case
+
+The program should continue prompting the user until a valid integer within the menu range is entered.  
+
+---
+
+### General Requirements  
+
+- **Error Handling**: Follow the input validation process outlined above.  
+- **Consistency**: Ensure menu titles, exit options, and functionality are consistent with this specification.  
+
+---
+
+# MS5 Submission
+
+## MS51 Submission 
+
+**List Food and Drink**
+
+### 51 Data Entry
+
+TBA
+
+### 51 Expected output
+
+TBA
+
+### 51 Submission
+
+Upload your source code (**Utils.cpp, Utils.h, Menu.h , Menu.cpp, Billable.h, Billable.cpp, Drink.h, Drink.cpp, Food.h, Food.cpp, Ordering.h, Ordering.cpp and main.cpp**) to your `matrix` account. Compile and run your code using the `g++` compiler [as shown in the introduction](#compiling-and-testing-your-program) and make sure that everything works properly.
+
+Then, run the following command from your account (replace `profname.proflastname` with your professor’s Seneca userid):
+```
+~profname.proflastname/submit 2??/prj/m51
+```
+and follow the instructions.
+
+- *2??* is replaced with your subject code
+
+### The submit program's options:
+```bash
+~prof_name.prof_lastname/submit DeliverableName [-submission options]<ENTER>
+[-submission option] acceptable values:
+  "-due":
+       Shows due dates only
+       This option cannot be used in combination with any other option.
+  "-skip_spaces":
+       Do the submission regardless of incorrect horizontal spacing.
+       This option may attract penalty.
+  "-skip_blank_lines":
+       Do the submission regardless of incorrect vertical spacing.
+       This option may attract penalty.
+  "-feedback":
+       Check the program execution without submission.
+```
+
+## [Back to MS5 Submission](#ms5-submission)
+
+
+
+## MS52 Submission 
+
+**Order Drink**
+
+### 52 Data Entry
+
+TBA
+
+### 52 Expected output
+
+TBA
+
+### 52 Submission
+
+Upload your source code (**Utils.cpp, Utils.h, Menu.h , Menu.cpp, Billable.h, Billable.cpp, Drink.h, Drink.cpp, Food.h, Food.cpp, Ordering.h, Ordering.cpp and main.cpp**) to your `matrix` account. Compile and run your code using the `g++` compiler [as shown in the introduction](#compiling-and-testing-your-program) and make sure that everything works properly.
+
+Then, run the following command from your account (replace `profname.proflastname` with your professor’s Seneca userid):
+```
+~profname.proflastname/submit 2??/prj/m52
+```
+and follow the instructions.
+
+- *2??* is replaced with your subject code
+
+### The submit program's options:
+```bash
+~prof_name.prof_lastname/submit DeliverableName [-submission options]<ENTER>
+[-submission option] acceptable values:
+  "-due":
+       Shows due dates only
+       This option cannot be used in combination with any other option.
+  "-skip_spaces":
+       Do the submission regardless of incorrect horizontal spacing.
+       This option may attract penalty.
+  "-skip_blank_lines":
+       Do the submission regardless of incorrect vertical spacing.
+       This option may attract penalty.
+  "-feedback":
+       Check the program execution without submission.
+```
+
+## [Back to MS5 Submission](#ms5-submission)
+
+
+## MS53 Submission 
+
+**Order Food**
+
+### 53 Data Entry
+
+TBA
+
+### 53 Expected output
+
+TBA
+
+### 53 Submission
+
+Upload your source code (**Utils.cpp, Utils.h, Menu.h , Menu.cpp, Billable.h, Billable.cpp, Drink.h, Drink.cpp, Food.h, Food.cpp, Ordering.h, Ordering.cpp and main.cpp**) to your `matrix` account. Compile and run your code using the `g++` compiler [as shown in the introduction](#compiling-and-testing-your-program) and make sure that everything works properly.
+
+Then, run the following command from your account (replace `profname.proflastname` with your professor’s Seneca userid):
+```
+~profname.proflastname/submit 2??/prj/m53
+```
+and follow the instructions.
+
+- *2??* is replaced with your subject code
+
+### The submit program's options:
+```bash
+~prof_name.prof_lastname/submit DeliverableName [-submission options]<ENTER>
+[-submission option] acceptable values:
+  "-due":
+       Shows due dates only
+       This option cannot be used in combination with any other option.
+  "-skip_spaces":
+       Do the submission regardless of incorrect horizontal spacing.
+       This option may attract penalty.
+  "-skip_blank_lines":
+       Do the submission regardless of incorrect vertical spacing.
+       This option may attract penalty.
+  "-feedback":
+       Check the program execution without submission.
+```
+
+## [Back to MS5 Submission](#ms5-submission)
+
+
+## MS54 Submission 
+
+**Display Bill**
+
+### 54 Data Entry
+
+TBA
+
+### 54 Expected output
+
+TBA
+
+### 54 Submission
+
+Upload your source code (**Utils.cpp, Utils.h, Menu.h , Menu.cpp, Billable.h, Billable.cpp, Drink.h, Drink.cpp, Food.h, Food.cpp, Ordering.h, Ordering.cpp and main.cpp**) to your `matrix` account. Compile and run your code using the `g++` compiler [as shown in the introduction](#compiling-and-testing-your-program) and make sure that everything works properly.
+
+Then, run the following command from your account (replace `profname.proflastname` with your professor’s Seneca userid):
+```
+~profname.proflastname/submit 2??/prj/m54
+```
+and follow the instructions.
+
+- *2??* is replaced with your subject code
+
+### The submit program's options:
+```bash
+~prof_name.prof_lastname/submit DeliverableName [-submission options]<ENTER>
+[-submission option] acceptable values:
+  "-due":
+       Shows due dates only
+       This option cannot be used in combination with any other option.
+  "-skip_spaces":
+       Do the submission regardless of incorrect horizontal spacing.
+       This option may attract penalty.
+  "-skip_blank_lines":
+       Do the submission regardless of incorrect vertical spacing.
+       This option may attract penalty.
+  "-feedback":
+       Check the program execution without submission.
+```
+
+## [Back to MS5 Submission](#ms5-submission)
+
+## MS55 Submission 
+
+**Reset Exit and Saved Bill**
+
+### 55 Data Entry
+
+TBA
+
+### 55 Expected output
+
+TBA
+
+### 55 Submission
+
+Upload your source code (**Utils.cpp, Utils.h, Menu.h , Menu.cpp, Billable.h, Billable.cpp, Drink.h, Drink.cpp, Food.h, Food.cpp, Ordering.h, Ordering.cpp and main.cpp**) to your `matrix` account. Compile and run your code using the `g++` compiler [as shown in the introduction](#compiling-and-testing-your-program) and make sure that everything works properly.
+
+Then, run the following command from your account (replace `profname.proflastname` with your professor’s Seneca userid):
+```
+~profname.proflastname/submit 2??/prj/m55
+```
+and follow the instructions.
+
+- *2??* is replaced with your subject code
+
+### The submit program's options:
+```bash
+~prof_name.prof_lastname/submit DeliverableName [-submission options]<ENTER>
+[-submission option] acceptable values:
+  "-due":
+       Shows due dates only
+       This option cannot be used in combination with any other option.
+  "-skip_spaces":
+       Do the submission regardless of incorrect horizontal spacing.
+       This option may attract penalty.
+  "-skip_blank_lines":
+       Do the submission regardless of incorrect vertical spacing.
+       This option may attract penalty.
+  "-feedback":
+       Check the program execution without submission.
+```
+
+## [Back to MS5 Submission](#ms5-submission)
+
+
+## MS56 Submission 
+
+**Fool-Proofing and Bad Data file**
+
+### 56 Data Entry
+
+TBA
+
+### 56 Expected output
+
+TBA
+
+### 56 Submission
+
+Upload your source code (**Utils.cpp, Utils.h, Menu.h , Menu.cpp, Billable.h, Billable.cpp, Drink.h, Drink.cpp, Food.h, Food.cpp, Ordering.h, Ordering.cpp and main.cpp**) to your `matrix` account. Compile and run your code using the `g++` compiler [as shown in the introduction](#compiling-and-testing-your-program) and make sure that everything works properly.
+
+Then, run the following command from your account (replace `profname.proflastname` with your professor’s Seneca userid):
+```
+~profname.proflastname/submit 2??/prj/m56
+```
+and follow the instructions.
+
+- *2??* is replaced with your subject code
+
+### The submit program's options:
+```bash
+~prof_name.prof_lastname/submit DeliverableName [-submission options]<ENTER>
+[-submission option] acceptable values:
+  "-due":
+       Shows due dates only
+       This option cannot be used in combination with any other option.
+  "-skip_spaces":
+       Do the submission regardless of incorrect horizontal spacing.
+       This option may attract penalty.
+  "-skip_blank_lines":
+       Do the submission regardless of incorrect vertical spacing.
+       This option may attract penalty.
+  "-feedback":
+       Check the program execution without submission.
+```
+
+## [Back to MS5 Submission](#ms5-submission)
