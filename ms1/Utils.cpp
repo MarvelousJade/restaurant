@@ -14,6 +14,10 @@
 /////////////////////////////////////////////////////////////////
 ***********************************************************************/
 #include <iostream>
+#include <string>
+#include <limits>
+#include <sstream>
+#include <cctype>
 #include "Utils.h"
 using namespace std;
 namespace seneca {
@@ -55,10 +59,45 @@ namespace seneca {
       }
       return cstring && *cstring == 0;
    }
+
    int Utils::getInt() {
+      string input;
       int validInt;
-      cin >> validInt;
-      return validInt;
+      
+      while(true) {
+         getline(cin, input);
+         
+         if(input.empty()) {
+            cout << "You must enter a value: ";
+            continue;
+         }
+         
+         stringstream ss(input); 
+         if(!(ss >> validInt)) {
+            cout << "Invalid integer: ";
+            continue;
+         }
+
+         char trailing;
+         if(ss >> trailing) {
+            cout << "Only an integer please: ";
+            continue;
+         }
+         
+         return validInt;
+      }
    }
 
+   int Utils::getInt(int min, int max) {
+      int validInt;
+      while(true) {
+         validInt = getInt();
+         
+         if(validInt >= min && validInt <= max) {
+            return validInt;
+         } else {
+            cout << "Invalid value: [" << min << "<= value <=" << max << "], try again: ";
+         }
+      }
+   }
 }

@@ -39,7 +39,7 @@ namespace seneca {
 		m_exitOption.display(cout);
 		cout << "\n";
 		m_entryPrompt.display(cout);
-		return ut.getInt();	
+		return ut.getInt(0, 3);	
 	}
 	size_t operator<<(ostream& ostr, const Menu& menu) {
 		if(&ostr == &cout) return menu.select();
