@@ -15,9 +15,7 @@
 ***********************************************************************/
 #include <iostream>
 #include <string>
-#include <limits>
 #include <sstream>
-#include <cctype>
 #include "Utils.h"
 using namespace std;
 namespace seneca {

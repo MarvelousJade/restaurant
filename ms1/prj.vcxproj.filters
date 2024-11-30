@@ -24,6 +24,12 @@
     <ClInclude Include="constants.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Billable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Drink.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Menu.cpp">
@@ -32,7 +38,13 @@
     <ClCompile Include="Utils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ms2.cpp">
+    <ClCompile Include="ms3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Billable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Drink.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

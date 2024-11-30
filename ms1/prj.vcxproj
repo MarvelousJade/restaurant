@@ -128,13 +128,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Billable.h" />
     <ClInclude Include="constants.h" />
+    <ClInclude Include="Drink.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Utils.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Billable.cpp" />
+    <ClCompile Include="Drink.cpp" />
     <ClCompile Include="Menu.cpp" />
-    <ClCompile Include="ms2.cpp" />
+    <ClCompile Include="ms3.cpp" />
     <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
