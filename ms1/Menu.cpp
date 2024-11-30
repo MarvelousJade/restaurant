@@ -39,7 +39,7 @@ namespace seneca {
 		m_exitOption.display(cout);
 		cout << "\n";
 		m_entryPrompt.display(cout);
-		return ut.getInt(0, 3);	
+		return ut.getInt(0, 4);	
 	}
 	size_t operator<<(ostream& ostr, const Menu& menu) {
 		if(&ostr == &cout) return menu.select();
@@ -68,13 +68,13 @@ namespace seneca {
 			m_rowNumber = rowNumber;
 		}
 	}
-	MenuItem::~MenuItem() {
-		delete[] m_content;
-		m_content = nullptr;
-		m_indentationsCount = 0;
-		m_indentationSize = 0;
-		m_rowNumber = 0;
-	}
+	/*MenuItem::~MenuItem() {*/
+	/*	delete[] m_content;*/
+	/*	m_content = nullptr;*/
+	/*	m_indentationsCount = 0;*/
+	/*	m_indentationSize = 0;*/
+	/*	m_rowNumber = 0;*/
+	/*}*/
 	MenuItem::operator bool() const {
 		return m_content != nullptr;
 	}
