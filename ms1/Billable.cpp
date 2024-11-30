@@ -19,7 +19,7 @@ namespace seneca {
 		if(this != &source) {
 			delete m_name;
 			m_price = source.m_price;
-			ut.alocpy(m_name, source.m_name);	
+			m_name = ut.alocpy(source.m_name);	
 		}
 		return *this;
 	}

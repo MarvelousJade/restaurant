@@ -68,6 +68,7 @@ namespace seneca {
          m_size = 'X';    
          return true;
       default:
+         m_size = '\0';
          return false;
       }
    }
@@ -83,6 +84,7 @@ namespace seneca {
    }
    ifstream& Drink::read(ifstream& inf) {
       string line;
+      m_size = '\0'; 
       if (getline(inf, line)) {
          string tempName{};
          string tempPriceStr{};
