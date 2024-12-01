@@ -22,24 +22,24 @@ using namespace seneca;
 using namespace std;
 
 void DrinkTester();
-/*void FoodTester();*/
+void FoodTester();
 void dumpFile(const char* fn);
 int main() {
    cout << "Testing Drink Class=============================" << endl;
    DrinkTester();
    cout << "Testing Food Class=============================" << endl;
-   /*FoodTester();*/
-   /*dumpFile("drinkout.csv");*/
-   /*dumpFile("foodout.csv");*/
+   FoodTester();
+   dumpFile("drinkout.csv");
+   dumpFile("foodout.csv");
    return 0;
 }
 
 void print(Drink D) {
    D.print() << endl;
 }
-/*void print(Food F) {*/
-/*   F.print() << endl;*/
-/*}*/
+void print(Food F) {
+   F.print() << endl;
+}
 void virtuals(Billable& B, ifstream& file, ofstream& outfile) {
    cout << endl << "Checking Virtuals: " << endl;
    while (file) {
@@ -111,50 +111,50 @@ void DrinkTester() {
       cout << "drinks.csv is missing!" << endl;
    }
 }
-/*void FoodTester() {*/
-/*   cout << "Food Tester!" << endl;*/
-/*   Food F1, F2;*/
-/*   ifstream file("foods.csv");*/
-/*   ofstream fileout("foodout.csv");*/
-/*   if (file) {*/
-/*      double total = 0;*/
-/*      F1.read(file);*/
-/*      F2.read(file);*/
-/*      cout << F1 << endl << F2 << endl;*/
-/*      print(F1);*/
-/*      print(F2);*/
-/*      if (F1.ordered()) {*/
-/*         cout << "Food by default is not ordered!" << endl;*/
-/*      }*/
-/*      else {*/
-/*         cout << "Enter the folowing:\n1<ENTER>\nwell done\n2<ENTER>\n<ENTER>\n0<ENTER>\n=========>" << endl;*/
-/*         while (F2.order()) {*/
-/*            print(F2);*/
-/*            total += F2;*/
-/*         }*/
-/*         cout.setf(ios::fixed);*/
-/*         cout.precision(2);*/
-/*         cout << "Total = " << total << endl;*/
-/*      }*/
-/*      if (F2.ordered()) {*/
-/*         cout << "When back is selected, Frink must be set to not-ordered!" << endl;*/
-/*      }*/
-/*      cout << "Enter the folowing:\n2<ENTER>\n<ENTER>\n=========>" << endl;*/
-/*      F2.order();*/
-/*      F1 = F2;*/
-/*      if (F1.ordered() && F2.ordered()) {*/
-/*         print(F1);*/
-/*         total = total + F1;*/
-/*         cout.setf(ios::fixed);*/
-/*         cout.precision(2);*/
-/*         cout << "Total = " << total << endl;*/
-/*      }*/
-/*      else {*/
-/*         cout << F1 << " and " << F2 << " should be in ordered status!" << endl;*/
-/*      }*/
-/*      virtuals(F1, file, fileout);*/
-/*   }*/
-/*   else {*/
-/*      cout << "foods.csv is missing!" << endl;*/
-/*   }*/
-/*}*/
+void FoodTester() {
+   cout << "Food Tester!" << endl;
+   Food F1, F2;
+   ifstream file("foods.csv");
+   ofstream fileout("foodout.csv");
+   if (file) {
+      double total = 0;
+      F1.read(file);
+      F2.read(file);
+      cout << F1 << endl << F2 << endl;
+      print(F1);
+      print(F2);
+      if (F1.ordered()) {
+         cout << "Food by default is not ordered!" << endl;
+      }
+      else {
+         cout << "Enter the folowing:\n1<ENTER>\nwell done\n2<ENTER>\n<ENTER>\n0<ENTER>\n=========>" << endl;
+         while (F2.order()) {
+            print(F2);
+            total += F2;
+         }
+         cout.setf(ios::fixed);
+         cout.precision(2);
+         cout << "Total = " << total << endl;
+      }
+      if (F2.ordered()) {
+         cout << "When back is selected, Frink must be set to not-ordered!" << endl;
+      }
+      cout << "Enter the folowing:\n2<ENTER>\n<ENTER>\n=========>" << endl;
+      F2.order();
+      F1 = F2;
+      if (F1.ordered() && F2.ordered()) {
+         print(F1);
+         total = total + F1;
+         cout.setf(ios::fixed);
+         cout.precision(2);
+         cout << "Total = " << total << endl;
+      }
+      else {
+         cout << F1 << " and " << F2 << " should be in ordered status!" << endl;
+      }
+      virtuals(F1, file, fileout);
+   }
+   else {
+      cout << "foods.csv is missing!" << endl;
+   }
+}
