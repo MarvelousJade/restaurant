@@ -61,7 +61,7 @@ MenuItem::MenuItem(const char *content, size_t Indentations,
       IndentationSize > 4) {
     setEmpty();
   } else {
-    m_content = ut.alocpy(content);
+    ut.alocpy(m_content, content);
     m_indentationsCount = Indentations;
     m_indentationSize = IndentationSize;
     m_rowNumber = rowNumber;
