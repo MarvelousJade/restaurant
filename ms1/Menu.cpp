@@ -54,11 +54,9 @@ void MenuItem::setEmpty() {
   m_indentationSize = 0;
   m_rowNumber = 0;
 }
-MenuItem::MenuItem(const char *content, size_t Indentations,
-                   size_t IndentationSize, int rowNumber) {
+MenuItem::MenuItem(const char *content, size_t Indentations, size_t IndentationSize, int rowNumber) {
   setEmpty();
-  if (content == nullptr || ut.isspace(content) || Indentations > 4 ||
-      IndentationSize > 4) {
+  if (content == nullptr || ut.isspace(content) || Indentations > 4 || IndentationSize > 4) {
     setEmpty();
   } else {
     ut.alocpy(m_content, content);
@@ -67,13 +65,13 @@ MenuItem::MenuItem(const char *content, size_t Indentations,
     m_rowNumber = rowNumber;
   }
 }
-/*MenuItem::~MenuItem() {*/
-/*	delete[] m_content;*/
-/*	m_content = nullptr;*/
-/*	m_indentationsCount = 0;*/
-/*	m_indentationSize = 0;*/
-/*	m_rowNumber = 0;*/
-/*}*/
+MenuItem::~MenuItem() {
+	delete[] m_content;
+	m_content = nullptr;
+	m_indentationsCount = 0;
+	m_indentationSize = 0;
+	m_rowNumber = 0;
+}
 MenuItem::operator bool() const { return m_content != nullptr; }
 ostream &MenuItem::display(ostream &ostr) const {
   if (*this) {

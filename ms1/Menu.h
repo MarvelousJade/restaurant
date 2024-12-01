@@ -20,7 +20,7 @@ namespace seneca {
       MenuItem(const char*,size_t,size_t, int);
       MenuItem(const MenuItem&) = delete;
       MenuItem& operator=(const MenuItem&) = delete;
-      /*~MenuItem();*/
+      ~MenuItem();
       operator bool() const;
       std::ostream& display(std::ostream& = std::cout) const;
    };
