@@ -85,7 +85,7 @@ namespace seneca {
    bool Food::order() {
       size_t size{};
 
-      Menu sizeMenu("Food Size Selection", "Back", 1, 9);         
+      Menu sizeMenu("Food Size Selection", "Back", 3);         
       sizeMenu << "Adult" << "Child";
 
       size = sizeMenu.select();
