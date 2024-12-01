@@ -8,16 +8,26 @@
 #include "Menu.h"
 using namespace std;
 namespace seneca {
+   void Food::setCustomize(const char* customize) {
+     if (customize && customize[0] != '\0') {
+       m_customize = new char[std::strlen(customize) + 1];
+       ut.alocpy(m_customize, customize);
+     } else {
+       delete[] m_customize;
+       m_customize = nullptr;
+     }
+   }
    Food::Food() {
       m_ordered =false;
       m_child = false;
       m_customize = nullptr;
    }
    Food::Food(Food& source) : Billable(source) {
-      if(source.name() != nullptr) {
+      if(source.name()) {
          m_ordered = source.m_ordered;
          m_child = source.m_child;
-         m_customize = ut.alocpy(source.m_customize);
+         m_customize = nullptr;
+         ut.alocpy(m_customize, source.m_customize);
       }
    }
    Food& Food::operator=(const Food& source) {
@@ -26,14 +36,14 @@ namespace seneca {
           delete m_customize;
           m_ordered = source.m_ordered;
           m_child = source.m_child;  
-          m_customize = ut.alocpy(source.m_customize);
+          ut.alocpy(m_customize, source.m_customize);
        }
        return *this;
    }
    Food::~Food() {
       m_ordered =false;
       m_child = false;
-      delete m_customize;
+      delete[] m_customize;
    }
    ostream& Food::print(ostream& ostr) const{
       ios::fmtflags originalFlags = ostr.flags();
@@ -92,24 +102,23 @@ namespace seneca {
          break;
       default:
          m_ordered = false;
-         delete m_customize;
+         delete[] m_customize;
          break;
       }
       
       if(m_ordered) {
-         string line;
+         char tempCustomize[101];
          cout << "Special instructions\n" << "> ";
-         getline(cin, line);
-         if(line.empty()) {
-            delete m_customize;
-            m_customize = nullptr;
+         cin.getline(tempCustomize, 100);
+
+         if(tempCustomize[0] != '\0') {
+            setCustomize(tempCustomize);
          } else {
-            m_customize = ut.alocpy(line.c_str());
+            setCustomize(nullptr);
          }
-         
-         return true;
       }
-      return false;
+
+      return m_ordered;
    }
    bool Food::ordered() const {
       return m_ordered; 
@@ -119,7 +128,7 @@ namespace seneca {
       if (getline(inf, line)) {
          m_child = false; 
          m_ordered = false;
-         delete m_customize;
+         delete[] m_customize;
          m_customize = nullptr;
 
          string tempName{};

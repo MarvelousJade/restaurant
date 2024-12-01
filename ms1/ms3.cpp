@@ -25,8 +25,8 @@ void DrinkTester();
 void FoodTester();
 void dumpFile(const char* fn);
 int main() {
-   cout << "Testing Drink Class=============================" << endl;
-   DrinkTester();
+   /*cout << "Testing Drink Class=============================" << endl;*/
+   /*DrinkTester();*/
    cout << "Testing Food Class=============================" << endl;
    FoodTester();
    dumpFile("drinkout.csv");

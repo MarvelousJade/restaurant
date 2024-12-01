@@ -6,6 +6,8 @@ namespace seneca {
       bool m_ordered;
       bool m_child;
       char* m_customize;
+   protected:
+      void setCustomize(const char* customize);
    public:
       Food();
       Food(Food&);
