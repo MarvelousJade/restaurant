@@ -50,7 +50,7 @@ namespace seneca {
       size_t size{};
 
       Menu sizeMenu("Drink Size Selection", "Back", 3);         
-      sizeMenu << "Small" << "Medium" << "Large" << "Extra Large";
+      sizeMenu << "Small" << "Medium" << "Larg" << "Extra Large";
 
       size = sizeMenu.select();
 
