@@ -10,7 +10,6 @@ using namespace std;
 namespace seneca {
    void Food::setCustomize(const char* customize) {
      if (customize && customize[0] != '\0') {
-       m_customize = new char[std::strlen(customize) + 1];
        ut.alocpy(m_customize, customize);
      } else {
        delete[] m_customize;
