@@ -61,3 +61,5 @@ ms1/ALL_BUILD.vcxproj
 ms1/ALL_BUILD.vcxproj.filters
 ms1/CMakeCache.txt
 ms1/CmakeLists.txt
+ms1/prj.vcxproj.filters
+ms1/prj.vcxproj
