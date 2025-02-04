@@ -39,7 +39,7 @@ size_t Menu::select() const {
   m_exitOption.display(cout);
   cout << "\n";
   m_entryPrompt.display(cout);
-  return ut.getInt(0, 4);
+  return ut.getInt(0, m_menuItemsCount);
 }
 size_t operator<<(ostream &ostr, const Menu &menu) {
   if (&ostr == &cout)
