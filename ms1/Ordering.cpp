@@ -13,8 +13,7 @@ using namespace std;
 namespace seneca {
    Ordering::Ordering(const char* drinksFile, const char* foodsFile)
         : m_foodCounter(0), m_drinkCounter(0), m_billableCounter(0), m_billSerialNumber(1),
-          m_foods(nullptr), m_drinks(nullptr) 
-   {
+          m_foods(nullptr), m_drinks(nullptr) {
        size_t numDrinks = countRecords(drinksFile);
        size_t numFoods = countRecords(foodsFile);
        
