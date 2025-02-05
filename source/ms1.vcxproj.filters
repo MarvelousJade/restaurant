@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\18196\OneDrive\Desktop\Seneca\ThirdSem\OOP244\OOP-Project\ms1\ms1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\18196\OneDrive\Desktop\Seneca\ThirdSem\OOP244\OOP-Project\ms1\Menu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\18196\OneDrive\Desktop\Seneca\ThirdSem\OOP244\OOP-Project\ms1\Utils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\18196\OneDrive\Desktop\Seneca\ThirdSem\OOP244\OOP-Project\ms1\CmakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4C6E0E57-7CF3-3AC2-BB92-E99D9EB13AB5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
